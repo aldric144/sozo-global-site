@@ -7,47 +7,106 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="hero-gradient text-white py-24 lg:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="flex justify-center mb-8">
-              <Image
-                src="/logo.jpg"
-                alt="SOZO Global"
-                width={120}
-                height={120}
-                className="rounded-full border-4 border-sozo-gold shadow-2xl"
-              />
+      <section className="relative text-white overflow-hidden">
+        {/* Background image with overlay */}
+        <div className="absolute inset-0">
+          <Image
+            src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1920&q=80"
+            alt="Students collaborating"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0A174E]/95 via-[#0A174E]/85 to-[#1a2a6c]/75" />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-36">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Text content */}
+            <div>
+              <div className="flex items-center gap-4 mb-8">
+                <Image
+                  src="/logo.jpg"
+                  alt="SOZO Global"
+                  width={80}
+                  height={80}
+                  className="rounded-full border-2 border-sozo-gold shadow-2xl"
+                />
+                <div>
+                  <p className="text-sozo-gold font-bold text-sm tracking-widest uppercase">SOZO Global</p>
+                  <p className="text-blue-200 text-xs">School of the Supernatural & Biblical Studies</p>
+                </div>
+              </div>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 leading-tight">
+                Empowering Nations.<br />
+                Advancing the Kingdom.<br />
+                <span className="text-sozo-gold">Transforming Lives.</span>
+              </h1>
+              <p className="text-xl text-blue-100 mb-10 leading-relaxed max-w-xl">
+                A world-class institution equipping believers through Spirit-led education,
+                supernatural ministry training, and academic excellence.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/admissions/apply"
+                  className="bg-sozo-gold text-sozo-blue px-8 py-4 rounded-lg font-bold text-lg hover:bg-sozo-gold-light transition-colors flex items-center justify-center shadow-lg"
+                >
+                  Apply Now
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+                <Link
+                  href="/programs"
+                  className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-sozo-blue transition-colors text-center"
+                >
+                  Explore Programs
+                </Link>
+                <Link
+                  href="/contact#schedule"
+                  className="border-2 border-sozo-gold text-sozo-gold px-8 py-4 rounded-lg font-bold text-lg hover:bg-sozo-gold hover:text-sozo-blue transition-colors text-center"
+                >
+                  Schedule a Discovery Call
+                </Link>
+              </div>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 leading-tight">
-              Empowering Nations.<br />
-              Advancing the Kingdom.<br />
-              <span className="text-sozo-gold">Transforming Lives.</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-blue-100 mb-10 max-w-3xl mx-auto leading-relaxed">
-              A world-class institution equipping believers through Spirit-led education,
-              supernatural ministry training, and academic excellence.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link
-                href="/admissions/apply"
-                className="bg-sozo-gold text-sozo-blue px-8 py-4 rounded-lg font-bold text-lg hover:bg-sozo-gold-light transition-colors flex items-center shadow-lg"
-              >
-                Apply Now
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-              <Link
-                href="/programs"
-                className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-sozo-blue transition-colors"
-              >
-                Explore Programs
-              </Link>
-              <Link
-                href="/contact#schedule"
-                className="border-2 border-sozo-gold text-sozo-gold px-8 py-4 rounded-lg font-bold text-lg hover:bg-sozo-gold hover:text-sozo-blue transition-colors"
-              >
-                Schedule a Discovery Call
-              </Link>
+
+            {/* Right: Image grid showcasing diverse community */}
+            <div className="hidden lg:grid grid-cols-2 gap-4">
+              <div className="space-y-4">
+                <div className="relative h-48 rounded-2xl overflow-hidden shadow-xl">
+                  <Image
+                    src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=600&q=80"
+                    alt="Students in graduation ceremony"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="relative h-64 rounded-2xl overflow-hidden shadow-xl">
+                  <Image
+                    src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80"
+                    alt="Professor teaching class"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+              <div className="space-y-4 pt-8">
+                <div className="relative h-64 rounded-2xl overflow-hidden shadow-xl">
+                  <Image
+                    src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80"
+                    alt="Diverse group of students studying together"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="relative h-48 rounded-2xl overflow-hidden shadow-xl">
+                  <Image
+                    src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=600&q=80"
+                    alt="Students in worship and fellowship"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
