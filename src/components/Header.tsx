@@ -77,7 +77,7 @@ export default function Header() {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-4 shrink-0">
-            <div className="w-[72px] h-[72px] relative shrink-0 rounded-full border border-sozo-gold/30 shadow-md overflow-hidden">
+            <div className="w-[82px] h-[82px] relative shrink-0 rounded-full border border-sozo-gold/30 shadow-md overflow-hidden">
               <Image
                 src={sozoLogo}
                 alt="SOZO Global School of the Supernatural & Biblical Studies"
