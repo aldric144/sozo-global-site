@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, import/no-anonymous-default-export */
 export default {
   name: 'event',
   title: 'Event',

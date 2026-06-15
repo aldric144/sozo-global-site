@@ -1,96 +1,111 @@
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Facebook, Twitter, Instagram, Youtube, Mail, Phone, MapPin } from 'lucide-react'
 
-const Footer = () => {
+export default function Footer() {
   return (
-    <footer className="bg-blue-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <footer className="bg-sozo-blue text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          {/* Brand */}
           <div>
-            <div className="flex items-center space-x-3 mb-4">
-              <div className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center">
-                <span className="text-blue-900 font-bold text-lg font-serif">S</span>
-              </div>
+            <div className="flex items-center gap-3 mb-4">
+              <Image src="/logo.jpg" alt="SOZO Global" width={48} height={48} className="rounded-full" />
               <div>
                 <h3 className="text-xl font-serif font-bold">SOZO Global</h3>
-                <p className="text-sm text-blue-200">School of the Supernatural</p>
+                <p className="text-sm text-blue-200">School of the Supernatural & Biblical Studies</p>
               </div>
             </div>
-            <p className="text-blue-200 mb-4">
-              Equipping believers, empowering leaders, and transforming nations through 
-              Spirit-led education and supernatural ministry training.
+            <p className="text-blue-200 mb-6 text-sm leading-relaxed">
+              Empowering Nations. Advancing the Kingdom. A world-class institution equipping
+              believers for supernatural ministry and global leadership.
             </p>
-            <div className="flex space-x-4">
-              <Facebook className="h-5 w-5 text-blue-200 hover:text-white cursor-pointer" />
-              <Twitter className="h-5 w-5 text-blue-200 hover:text-white cursor-pointer" />
-              <Instagram className="h-5 w-5 text-blue-200 hover:text-white cursor-pointer" />
-              <Youtube className="h-5 w-5 text-blue-200 hover:text-white cursor-pointer" />
+            <div className="flex gap-4">
+              <a href="#" aria-label="Facebook" className="text-blue-200 hover:text-sozo-gold transition-colors"><Facebook className="h-5 w-5" /></a>
+              <a href="#" aria-label="Twitter" className="text-blue-200 hover:text-sozo-gold transition-colors"><Twitter className="h-5 w-5" /></a>
+              <a href="#" aria-label="Instagram" className="text-blue-200 hover:text-sozo-gold transition-colors"><Instagram className="h-5 w-5" /></a>
+              <a href="#" aria-label="YouTube" className="text-blue-200 hover:text-sozo-gold transition-colors"><Youtube className="h-5 w-5" /></a>
             </div>
           </div>
 
+          {/* Programs */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Academics</h4>
-            <ul className="space-y-2">
-              <li><Link href="/academics" className="text-blue-200 hover:text-white">All Programs</Link></li>
-              <li><Link href="/certificates" className="text-blue-200 hover:text-white">Certificates</Link></li>
-              <li><Link href="/academics/diploma" className="text-blue-200 hover:text-white">Diploma Track</Link></li>
-              <li><Link href="/academics/masters" className="text-blue-200 hover:text-white">Master's Track</Link></li>
-              <li><Link href="/academics/doctoral" className="text-blue-200 hover:text-white">Doctoral Track</Link></li>
-              <li><Link href="/academics/chaplaincy" className="text-blue-200 hover:text-white">Chaplaincy</Link></li>
+            <h4 className="text-lg font-semibold mb-4 text-sozo-gold">Programs</h4>
+            <ul className="space-y-2 text-sm">
+              <li><Link href="/programs/diploma" className="text-blue-200 hover:text-white transition-colors">Diploma Program</Link></li>
+              <li><Link href="/programs/masters" className="text-blue-200 hover:text-white transition-colors">Master&apos;s Program</Link></li>
+              <li><Link href="/programs/doctoral" className="text-blue-200 hover:text-white transition-colors">Doctoral Program</Link></li>
+              <li><Link href="/programs/chaplaincy" className="text-blue-200 hover:text-white transition-colors">Chaplaincy Certification</Link></li>
+              <li><Link href="/programs/licensing" className="text-blue-200 hover:text-white transition-colors">Ministry Licensing</Link></li>
+              <li><Link href="/programs/continuing-education" className="text-blue-200 hover:text-white transition-colors">Continuing Education</Link></li>
             </ul>
           </div>
 
+          {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Student Resources</h4>
-            <ul className="space-y-2">
-              <li><Link href="/admissions" className="text-blue-200 hover:text-white">Admissions</Link></li>
-              <li><Link href="/student-life" className="text-blue-200 hover:text-white">Student Life</Link></li>
-              <li><Link href="/resources" className="text-blue-200 hover:text-white">Online Learning</Link></li>
-              <li><Link href="/resources#library" className="text-blue-200 hover:text-white">Library</Link></li>
-              <li><Link href="/resources#events" className="text-blue-200 hover:text-white">Events</Link></li>
-              <li><Link href="/about#mission" className="text-blue-200 hover:text-white">Mission and Vision</Link></li>
-              <li><a href="https://canvas.sozoglobal.org" target="_blank" rel="noopener noreferrer" className="text-blue-200 hover:text-white">Student Portal</a></li>
+            <h4 className="text-lg font-semibold mb-4 text-sozo-gold">Quick Links</h4>
+            <ul className="space-y-2 text-sm">
+              <li><Link href="/about" className="text-blue-200 hover:text-white transition-colors">About Us</Link></li>
+              <li><Link href="/admissions" className="text-blue-200 hover:text-white transition-colors">Admissions</Link></li>
+              <li><Link href="/academics" className="text-blue-200 hover:text-white transition-colors">Academics</Link></li>
+              <li><Link href="/student-life" className="text-blue-200 hover:text-white transition-colors">Student Life</Link></li>
+              <li><Link href="/events" className="text-blue-200 hover:text-white transition-colors">Events</Link></li>
+              <li><Link href="/blog" className="text-blue-200 hover:text-white transition-colors">Blog</Link></li>
+              <li><Link href="/contact" className="text-blue-200 hover:text-white transition-colors">Contact Us</Link></li>
             </ul>
           </div>
 
+          {/* Contact */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
-            <div className="space-y-3">
-              <div className="flex items-center space-x-3">
-                <MapPin className="h-5 w-5 text-yellow-500" />
+            <h4 className="text-lg font-semibold mb-4 text-sozo-gold">Contact</h4>
+            <div className="space-y-4 text-sm">
+              <div className="flex items-start gap-3">
+                <MapPin className="h-5 w-5 text-sozo-gold shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-blue-200">Global Headquarters</p>
-                  <p className="text-sm text-blue-300">Worldwide Online Campus</p>
+                  <p className="text-white font-medium">Global Headquarters</p>
+                  <p className="text-blue-200">Worldwide Online Campus</p>
                 </div>
               </div>
-              <div className="flex items-center space-x-3">
-                <Phone className="h-5 w-5 text-yellow-500" />
+              <div className="flex items-start gap-3">
+                <Phone className="h-5 w-5 text-sozo-gold shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-blue-200">+1 (555) 123-SOZO</p>
-                  <p className="text-sm text-blue-300">Mon-Fri 9AM-5PM EST</p>
+                  <p className="text-blue-200">Mon–Fri 9AM–5PM EST</p>
                 </div>
               </div>
-              <div className="flex items-center space-x-3">
-                <Mail className="h-5 w-5 text-yellow-500" />
+              <div className="flex items-start gap-3">
+                <Mail className="h-5 w-5 text-sozo-gold shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-blue-200">info@sozoglobal.edu</p>
-                  <p className="text-sm text-blue-300">24/7 Support</p>
+                  <p className="text-blue-200">info@sozoglobal.school</p>
                 </div>
               </div>
+            </div>
+            <div className="mt-6 space-y-2">
+              <Link
+                href="/admissions/apply"
+                className="block w-full text-center bg-sozo-gold text-sozo-blue px-4 py-2.5 rounded font-bold text-sm hover:bg-sozo-gold-light transition-colors"
+              >
+                Apply Now
+              </Link>
+              <Link
+                href="/contact#schedule"
+                className="block w-full text-center border border-sozo-gold text-sozo-gold px-4 py-2.5 rounded font-bold text-sm hover:bg-sozo-gold hover:text-sozo-blue transition-colors"
+              >
+                Schedule a Discovery Call
+              </Link>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-blue-800 mt-8 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-blue-200 text-sm">
-              © 2025 SOZO Global School of the Supernatural and Biblical Studies. All rights reserved.
+        <div className="border-t border-blue-800 mt-12 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-blue-200 text-sm text-center md:text-left">
+              &copy; {new Date().getFullYear()} SOZO Global School of the Supernatural & Biblical Studies. All rights reserved.
             </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <Link href="/privacy" className="text-blue-200 hover:text-white text-sm">Privacy Policy</Link>
-              <Link href="/terms" className="text-blue-200 hover:text-white text-sm">Terms of Service</Link>
-              <Link href="/accessibility" className="text-blue-200 hover:text-white text-sm">Accessibility</Link>
+            <div className="flex gap-6 text-sm">
+              <Link href="/privacy" className="text-blue-200 hover:text-white transition-colors">Privacy Policy</Link>
+              <Link href="/terms" className="text-blue-200 hover:text-white transition-colors">Terms of Service</Link>
+              <Link href="/accessibility" className="text-blue-200 hover:text-white transition-colors">Accessibility</Link>
             </div>
           </div>
         </div>
@@ -98,5 +113,3 @@ const Footer = () => {
     </footer>
   )
 }
-
-export default Footer

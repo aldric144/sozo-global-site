@@ -15,9 +15,32 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "SOZO Global School of the Supernatural and Biblical Studies",
-  description: "Equipping believers, empowering leaders, and transforming nations through Spirit-led education and supernatural ministry training.",
-  keywords: "supernatural ministry school, biblical studies certificate, prophetic training, healing ministry, Christian education",
+  title: {
+    default: "SOZO Global School of the Supernatural & Biblical Studies",
+    template: "%s | SOZO Global",
+  },
+  description:
+    "Empowering Nations. Advancing the Kingdom. A world-class institution offering diploma, master's, and doctoral programs in supernatural ministry and biblical studies.",
+  keywords:
+    "SOZO Global, supernatural ministry school, biblical studies, prophetic training, theological education, Christian university, online ministry school, doctoral program, masters degree",
+  openGraph: {
+    title: "SOZO Global School of the Supernatural & Biblical Studies",
+    description:
+      "Empowering Nations. Advancing the Kingdom. World-class theological education.",
+    url: "https://sozoglobal.school",
+    siteName: "SOZO Global",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SOZO Global School of the Supernatural & Biblical Studies",
+    description:
+      "Empowering Nations. Advancing the Kingdom. World-class theological education.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -27,6 +50,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/logo.jpg" />
+      </head>
       <body
         className={`${inter.variable} ${playfair.variable} antialiased font-sans`}
       >

@@ -2,163 +2,187 @@
 
 import React, { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Menu, X, ChevronDown } from 'lucide-react'
 
-const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isAcademicsOpen, setIsAcademicsOpen] = useState(false)
+const navItems = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about', children: [
+    { label: 'About SOZO Global', href: '/about' },
+    { label: 'Mission & Vision', href: '/about/mission' },
+    { label: 'History of SOZO', href: '/about/history' },
+    { label: "Founder's Biography", href: '/about/founder' },
+    { label: 'Faculty & Staff', href: '/about/faculty' },
+    { label: 'Accreditation & Recognition', href: '/about/accreditation' },
+  ]},
+  { label: 'Programs', href: '/programs', children: [
+    { label: 'All Programs', href: '/programs' },
+    { label: 'Diploma Program', href: '/programs/diploma' },
+    { label: "Master's Program", href: '/programs/masters' },
+    { label: 'Doctoral Program', href: '/programs/doctoral' },
+    { label: 'Chaplaincy Certification', href: '/programs/chaplaincy' },
+    { label: 'Ministry Licensing & Ordination', href: '/programs/licensing' },
+    { label: 'Continuing Education', href: '/programs/continuing-education' },
+  ]},
+  { label: 'Academics', href: '/academics', children: [
+    { label: 'Academic Overview', href: '/academics' },
+    { label: 'Academic Departments', href: '/academics/departments' },
+    { label: 'Academic Calendar', href: '/academics/calendar' },
+    { label: 'Academic Policies', href: '/academics/policies' },
+    { label: 'Research & Innovation', href: '/academics/research' },
+  ]},
+  { label: 'Admissions', href: '/admissions', children: [
+    { label: 'Admission Requirements', href: '/admissions' },
+    { label: 'Admission Process', href: '/admissions/process' },
+    { label: 'Tuition & Fees', href: '/admissions/tuition' },
+    { label: 'Request Information', href: '/admissions/request-info' },
+    { label: 'Apply Now', href: '/admissions/apply' },
+  ]},
+  { label: 'Student Life', href: '/student-life' },
+  { label: 'Events', href: '/events' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contact', href: '/contact' },
+]
+
+export default function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null)
 
   return (
-    <header className="bg-white shadow-lg border-b-2 border-blue-900">
+    <header className="bg-white shadow-md sticky top-0 z-50">
+      {/* Top bar with CTA buttons */}
+      <div className="bg-sozo-blue text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-2">
+          <p className="text-sm hidden sm:block">Empowering Nations. Advancing the Kingdom.</p>
+          <div className="flex items-center gap-3 ml-auto">
+            <Link
+              href="/admissions/apply"
+              className="bg-sozo-gold text-sozo-blue px-4 py-1.5 rounded text-sm font-bold hover:bg-sozo-gold-light transition-colors"
+            >
+              Apply Now
+            </Link>
+            <Link
+              href="/contact#schedule"
+              className="border border-sozo-gold text-sozo-gold px-4 py-1.5 rounded text-sm font-bold hover:bg-sozo-gold hover:text-sozo-blue transition-colors"
+            >
+              Schedule a Discovery Call
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Main nav */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
-          <Link href="/" className="flex items-center space-x-3">
-            <div className="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center">
-              <span className="text-blue-900 font-bold text-xl font-serif">S</span>
-            </div>
-            <div>
-              <h1 className="text-2xl font-serif font-bold text-blue-900">SOZO Global</h1>
-              <p className="text-sm text-gray-600">School of the Supernatural</p>
+        <div className="flex justify-between items-center py-3">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-3 shrink-0">
+            <Image
+              src="/logo.jpg"
+              alt="SOZO Global School of the Supernatural & Biblical Studies"
+              width={56}
+              height={56}
+              className="rounded-full"
+              priority
+            />
+            <div className="hidden sm:block">
+              <p className="text-lg font-serif font-bold text-sozo-blue leading-tight">SOZO Global</p>
+              <p className="text-xs text-gray-600">School of the Supernatural & Biblical Studies</p>
             </div>
           </Link>
 
-          <nav className="hidden lg:flex items-center space-x-8">
-            <Link href="/" className="text-gray-700 hover:text-blue-900 font-medium">
-              Home
-            </Link>
-            <Link href="/about" className="text-gray-700 hover:text-blue-900 font-medium">
-              About Us
-            </Link>
-            
-            <div className="relative group">
-              <button 
-                className="flex items-center text-gray-700 hover:text-blue-900 font-medium"
-                onMouseEnter={() => setIsAcademicsOpen(true)}
-                onMouseLeave={() => setIsAcademicsOpen(false)}
+          {/* Desktop nav */}
+          <nav className="hidden xl:flex items-center gap-1">
+            {navItems.map((item) => (
+              <div
+                key={item.label}
+                className="relative group"
+                onMouseEnter={() => item.children && setOpenDropdown(item.label)}
+                onMouseLeave={() => setOpenDropdown(null)}
               >
-                Academics
-                <ChevronDown className="ml-1 h-4 w-4" />
-              </button>
-              
-              {isAcademicsOpen && (
-                <div 
-                  className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50"
-                  onMouseEnter={() => setIsAcademicsOpen(true)}
-                  onMouseLeave={() => setIsAcademicsOpen(false)}
+                <Link
+                  href={item.href}
+                  className="flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:text-sozo-blue rounded-md hover:bg-gray-50 transition-colors"
                 >
-                  <Link href="/academics" className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-900">
-                    All Programs
-                  </Link>
-                  <div className="border-t border-gray-100 my-2"></div>
-                  <Link href="/academics/diploma" className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-900">
-                    Diploma Track
-                  </Link>
-                  <Link href="/academics/masters" className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-900">
-                    Master's Track
-                  </Link>
-                  <Link href="/academics/doctoral" className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-900">
-                    Doctoral Track
-                  </Link>
-                  <Link href="/academics/chaplaincy" className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-900">
-                    Chaplaincy Certification
-                  </Link>
-                  <div className="border-t border-gray-100 my-2"></div>
-                  <Link href="/certificates" className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-900">
-                    Certificates (150+ Programs)
-                  </Link>
-                </div>
-              )}
-            </div>
+                  {item.label}
+                  {item.children && <ChevronDown className="ml-1 h-3 w-3" />}
+                </Link>
 
-            <Link href="/admissions" className="text-gray-700 hover:text-blue-900 font-medium">
-              Admissions
-            </Link>
-            <Link href="/student-life" className="text-gray-700 hover:text-blue-900 font-medium">
-              Student Life
-            </Link>
-            <Link href="/resources" className="text-gray-700 hover:text-blue-900 font-medium">
-              Resources
-            </Link>
-            <Link href="/contact" className="text-gray-700 hover:text-blue-900 font-medium">
-              Contact Us
-            </Link>
-            <a 
-              href="https://canvas.sozoglobal.org" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="bg-blue-900 text-white px-4 py-2 rounded-lg hover:bg-blue-800 font-medium"
-            >
-              Student Portal
-            </a>
+                {item.children && openDropdown === item.label && (
+                  <div className="absolute top-full left-0 mt-0 w-60 bg-white rounded-lg shadow-xl border border-gray-100 py-2 z-50">
+                    {item.children.map((child) => (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-sozo-blue hover:text-white transition-colors"
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
           </nav>
 
+          {/* Mobile menu button */}
           <button
-            className="lg:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="xl:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle navigation menu"
           >
-            {isMenuOpen ? (
-              <X className="h-6 w-6 text-gray-700" />
-            ) : (
-              <Menu className="h-6 w-6 text-gray-700" />
-            )}
+            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
+      </div>
 
-        {isMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-gray-200">
-            <div className="flex flex-col space-y-4">
-              <Link href="/" className="text-gray-700 hover:text-blue-900 font-medium">
-                Home
-              </Link>
-              <Link href="/about" className="text-gray-700 hover:text-blue-900 font-medium">
-                About Us
-              </Link>
-              <Link href="/academics" className="text-gray-700 hover:text-blue-900 font-medium">
-                Academics
-              </Link>
-              <div className="pl-4 space-y-2">
-                <Link href="/academics/diploma" className="block text-gray-600 hover:text-blue-900">
-                  Diploma Track
+      {/* Mobile menu */}
+      {mobileMenuOpen && (
+        <div className="xl:hidden bg-white border-t border-gray-200 max-h-[80vh] overflow-y-auto">
+          <div className="px-4 py-4 space-y-1">
+            {navItems.map((item) => (
+              <div key={item.label}>
+                <Link
+                  href={item.href}
+                  className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-sozo-blue hover:bg-gray-50 rounded-md"
+                  onClick={() => !item.children && setMobileMenuOpen(false)}
+                >
+                  {item.label}
                 </Link>
-                <Link href="/academics/masters" className="block text-gray-600 hover:text-blue-900">
-                  Master's Track
-                </Link>
-                <Link href="/academics/doctoral" className="block text-gray-600 hover:text-blue-900">
-                  Doctoral Track
-                </Link>
-                <Link href="/academics/chaplaincy" className="block text-gray-600 hover:text-blue-900">
-                  Chaplaincy Certification
-                </Link>
-                <Link href="/certificates" className="block text-gray-600 hover:text-blue-900">
-                  Certificates
-                </Link>
+                {item.children && (
+                  <div className="pl-6 space-y-1">
+                    {item.children.map((child) => (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        className="block px-3 py-1.5 text-sm text-gray-600 hover:text-sozo-blue hover:bg-gray-50 rounded-md"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
-              <Link href="/admissions" className="text-gray-700 hover:text-blue-900 font-medium">
-                Admissions
-              </Link>
-              <Link href="/student-life" className="text-gray-700 hover:text-blue-900 font-medium">
-                Student Life
-              </Link>
-              <Link href="/resources" className="text-gray-700 hover:text-blue-900 font-medium">
-                Resources
-              </Link>
-              <Link href="/contact" className="text-gray-700 hover:text-blue-900 font-medium">
-                Contact Us
-              </Link>
-              <a 
-                href="https://canvas.sozoglobal.org" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="bg-blue-900 text-white px-4 py-2 rounded-lg hover:bg-blue-800 font-medium text-center"
+            ))}
+            <div className="pt-4 border-t border-gray-200 space-y-2">
+              <Link
+                href="/admissions/apply"
+                className="block w-full text-center bg-sozo-gold text-sozo-blue px-4 py-3 rounded-lg font-bold hover:bg-sozo-gold-light transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
               >
-                Student Portal
-              </a>
+                Apply Now
+              </Link>
+              <Link
+                href="/contact#schedule"
+                className="block w-full text-center border-2 border-sozo-blue text-sozo-blue px-4 py-3 rounded-lg font-bold hover:bg-sozo-blue hover:text-white transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Schedule a Discovery Call
+              </Link>
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </header>
   )
 }
-
-export default Header
