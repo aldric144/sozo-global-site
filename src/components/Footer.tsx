@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Facebook, Twitter, Instagram, Youtube, Mail, Phone, MapPin } from 'lucide-react'
+import sozoLogo from '../../public/logo.jpg'
 
 export default function Footer() {
   return (
@@ -11,7 +12,9 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <Image src="/logo.jpg" alt="SOZO Global" width={60} height={60} className="rounded-full border border-sozo-gold/40 shadow-md" />
+              <div className="w-[60px] h-[60px] relative shrink-0 rounded-full border border-sozo-gold/40 shadow-md overflow-hidden">
+                <Image src={sozoLogo} alt="SOZO Global" fill className="object-cover" />
+              </div>
               <div>
                 <h3 className="text-xl font-serif font-bold">SOZO Global</h3>
                 <p className="text-sm text-blue-200">School of the Supernatural & Biblical Studies</p>

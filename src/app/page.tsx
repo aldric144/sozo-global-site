@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight, Globe, Users, BookOpen, Award, GraduationCap, Heart, Calendar, Star } from 'lucide-react'
+import sozoLogo from '../../public/logo.jpg'
 
 export default function HomePage() {
   return (
@@ -25,13 +26,14 @@ export default function HomePage() {
             {/* Left: Text content */}
             <div>
               <div className="flex items-center gap-4 mb-8">
-                <Image
-                  src="/logo.jpg"
-                  alt="SOZO Global"
-                  width={96}
-                  height={96}
-                  className="rounded-full border-2 border-sozo-gold shadow-2xl"
-                />
+                <div className="w-[96px] h-[96px] relative shrink-0 rounded-full border-2 border-sozo-gold shadow-2xl overflow-hidden">
+                  <Image
+                    src={sozoLogo}
+                    alt="SOZO Global"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
                 <div>
                   <p className="text-sozo-gold font-bold text-sm tracking-widest uppercase">SOZO Global</p>
                   <p className="text-blue-200 text-xs">School of the Supernatural & Biblical Studies</p>

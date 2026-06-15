@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Menu, X, ChevronDown } from 'lucide-react'
+import sozoLogo from '../../public/logo.jpg'
 
 const navItems = [
   { label: 'Home', href: '/' },
@@ -76,14 +77,15 @@ export default function Header() {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-4 shrink-0">
-            <Image
-              src="/logo.jpg"
-              alt="SOZO Global School of the Supernatural & Biblical Studies"
-              width={72}
-              height={72}
-              className="rounded-full border border-sozo-gold/30 shadow-md"
-              priority
-            />
+            <div className="w-[72px] h-[72px] relative shrink-0 rounded-full border border-sozo-gold/30 shadow-md overflow-hidden">
+              <Image
+                src={sozoLogo}
+                alt="SOZO Global School of the Supernatural & Biblical Studies"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
             <div className="hidden sm:block">
               <p className="text-xl font-serif font-bold text-sozo-blue leading-tight">SOZO Global</p>
               <p className="text-xs text-gray-600">School of the Supernatural & Biblical Studies</p>
