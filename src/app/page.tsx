@@ -28,8 +28,8 @@ export default function HomePage() {
                 <Image
                   src="/logo.jpg"
                   alt="SOZO Global"
-                  width={80}
-                  height={80}
+                  width={96}
+                  height={96}
                   className="rounded-full border-2 border-sozo-gold shadow-2xl"
                 />
                 <div>

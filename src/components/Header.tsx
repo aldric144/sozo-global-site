@@ -73,19 +73,19 @@ export default function Header() {
 
       {/* Main nav */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-3">
+        <div className="flex justify-between items-center py-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 shrink-0">
+          <Link href="/" className="flex items-center gap-4 shrink-0">
             <Image
               src="/logo.jpg"
               alt="SOZO Global School of the Supernatural & Biblical Studies"
-              width={56}
-              height={56}
-              className="rounded-full"
+              width={72}
+              height={72}
+              className="rounded-full border border-sozo-gold/30 shadow-md"
               priority
             />
             <div className="hidden sm:block">
-              <p className="text-lg font-serif font-bold text-sozo-blue leading-tight">SOZO Global</p>
+              <p className="text-xl font-serif font-bold text-sozo-blue leading-tight">SOZO Global</p>
               <p className="text-xs text-gray-600">School of the Supernatural & Biblical Studies</p>
             </div>
           </Link>

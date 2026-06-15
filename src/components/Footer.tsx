@@ -11,7 +11,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <Image src="/logo.jpg" alt="SOZO Global" width={48} height={48} className="rounded-full" />
+              <Image src="/logo.jpg" alt="SOZO Global" width={60} height={60} className="rounded-full border border-sozo-gold/40 shadow-md" />
               <div>
                 <h3 className="text-xl font-serif font-bold">SOZO Global</h3>
                 <p className="text-sm text-blue-200">School of the Supernatural & Biblical Studies</p>
