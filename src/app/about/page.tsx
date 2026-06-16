@@ -41,8 +41,8 @@ export default function AboutPage() {
             </div>
             <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl">
               <Image
-                src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=800&q=80"
-                alt="Diverse students studying Scripture together"
+                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&q=80"
+                alt="Diverse adult students in a graduate-level discussion"
                 fill
                 className="object-cover"
               />
