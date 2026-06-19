@@ -1,211 +1,108 @@
-import React from 'react'
+import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight, BookOpen, GraduationCap, Award, Users } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
+import { departments } from '@/lib/data'
+
+export const metadata: Metadata = {
+  title: 'Academics',
+  description: 'Explore SOZO Global academic programs, departments, and research across 12 core schools offering 150+ programs.',
+}
 
 export default function AcademicsPage() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-900 to-blue-800 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-serif font-bold mb-6">
-              Academic Programs
-            </h1>
-            <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-              Discover world-class education that combines academic rigor with 
-              supernatural ministry training for global impact.
-            </p>
-          </div>
+      <section className="hero-gradient text-white py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4">Academics</h1>
+          <p className="text-xl text-blue-100 max-w-3xl mx-auto">
+            Spirit-led instruction, biblical truth, and practical activation across 12 core schools.
+          </p>
         </div>
       </section>
 
-      {/* Degree Programs */}
       <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-blue-900 mb-4">
-              Degree Programs
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Choose from our comprehensive degree tracks designed to equip you 
-              for leadership in ministry, missions, and marketplace influence.
-            </p>
-          </div>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-serif font-bold text-sozo-blue mb-6">Academic Overview</h2>
+          <p className="text-lg text-gray-700 leading-relaxed mb-6">
+            At SOZO Global, our academic approach is deeply rooted in biblical truth, Spirit-led
+            instruction, and practical activation. Our programs are designed to cultivate mature,
+            Spirit-empowered believers who walk in authority, revelation, and purpose.
+          </p>
+          <p className="text-gray-700 leading-relaxed mb-10">
+            We offer a dynamic blend of theological study, supernatural ministry training, spiritual
+            leadership development, and advanced research opportunities. Whether you&apos;re pursuing a
+            certificate, diploma, or doctoral degree, our academic pathways are designed to deepen
+            your faith, sharpen your gifts, and equip you for Kingdom impact globally.
+          </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Diploma Track */}
-            <div className="bg-gray-50 rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <div className="w-12 h-12 bg-blue-900 rounded-lg flex items-center justify-center mb-4">
-                <BookOpen className="h-6 w-6 text-white" />
-              </div>
-              <h3 className="text-xl font-serif font-bold text-blue-900 mb-3">Diploma Track</h3>
-              <p className="text-gray-600 mb-4">
-                Foundation-level program covering essential biblical studies and 
-                supernatural ministry principles.
-              </p>
-              <div className="mb-4">
-                <p className="text-sm text-gray-500 mb-1">Duration: Details coming soon</p>
-                <p className="text-sm text-gray-500">Delivery: Details coming soon</p>
-              </div>
-              <Link 
-                href="/academics/diploma" 
-                className="bg-blue-900 text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors flex items-center justify-center"
+          {/* Quick Links */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-14">
+            {[
+              { label: 'Departments', href: '/academics/departments' },
+              { label: 'Calendar', href: '/academics/calendar' },
+              { label: 'Policies', href: '/academics/policies' },
+              { label: 'Research', href: '/academics/research' },
+            ].map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-sozo-blue hover:text-white transition-colors group"
               >
-                Learn More
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <span className="font-medium">{link.label}</span>
+                <ArrowRight className="h-4 w-4 group-hover:text-sozo-gold" />
               </Link>
-            </div>
-
-            {/* Master's Track */}
-            <div className="bg-gray-50 rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <div className="w-12 h-12 bg-yellow-500 rounded-lg flex items-center justify-center mb-4">
-                <GraduationCap className="h-6 w-6 text-blue-900" />
-              </div>
-              <h3 className="text-xl font-serif font-bold text-blue-900 mb-3">Master's Track</h3>
-              <p className="text-gray-600 mb-4">
-                Advanced theological education with specialization in supernatural 
-                ministry and global leadership.
-              </p>
-              <div className="mb-4">
-                <p className="text-sm text-gray-500 mb-1">Duration: Details coming soon</p>
-                <p className="text-sm text-gray-500">Delivery: Details coming soon</p>
-              </div>
-              <Link 
-                href="/academics/masters" 
-                className="bg-blue-900 text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors flex items-center justify-center"
-              >
-                Learn More
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </div>
-
-            {/* Doctoral Track */}
-            <div className="bg-gray-50 rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <div className="w-12 h-12 bg-blue-900 rounded-lg flex items-center justify-center mb-4">
-                <Award className="h-6 w-6 text-white" />
-              </div>
-              <h3 className="text-xl font-serif font-bold text-blue-900 mb-3">Doctoral Track</h3>
-              <p className="text-gray-600 mb-4">
-                Highest level of academic achievement with research focus on 
-                supernatural ministry and global transformation.
-              </p>
-              <div className="mb-4">
-                <p className="text-sm text-gray-500 mb-1">Duration: Details coming soon</p>
-                <p className="text-sm text-gray-500">Delivery: Details coming soon</p>
-              </div>
-              <Link 
-                href="/academics/doctoral" 
-                className="bg-blue-900 text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors flex items-center justify-center"
-              >
-                Learn More
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </div>
-
-            {/* Chaplaincy Certification */}
-            <div className="bg-gray-50 rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-              <div className="w-12 h-12 bg-yellow-500 rounded-lg flex items-center justify-center mb-4">
-                <Users className="h-6 w-6 text-blue-900" />
-              </div>
-              <h3 className="text-xl font-serif font-bold text-blue-900 mb-3">Chaplaincy Certification</h3>
-              <p className="text-gray-600 mb-4">
-                Specialized training for military, hospital, and corporate 
-                chaplaincy with supernatural ministry integration.
-              </p>
-              <div className="mb-4">
-                <p className="text-sm text-gray-500 mb-1">Duration: Details coming soon</p>
-                <p className="text-sm text-gray-500">Delivery: Details coming soon</p>
-              </div>
-              <Link 
-                href="/academics/chaplaincy" 
-                className="bg-blue-900 text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition-colors flex items-center justify-center"
-              >
-                Learn More
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Certificates Section */}
+      {/* Departments */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-blue-900 mb-4">
-              Certificate Programs
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Explore our extensive collection of specialized certificates designed 
-              to enhance your ministry skills and spiritual authority.
-            </p>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-lg p-8 text-center">
-            <div className="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Award className="h-8 w-8 text-blue-900" />
-            </div>
-            <h3 className="text-2xl font-serif font-bold text-blue-900 mb-4">
-              150+ Certificate Programs
-            </h3>
-            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-              From prophetic studies to marketplace ministry, discover specialized 
-              training programs organized into 10 comprehensive categories.
-            </p>
-            <Link 
-              href="/certificates" 
-              className="bg-blue-900 text-white px-8 py-4 rounded-lg hover:bg-blue-800 transition-colors inline-flex items-center text-lg font-semibold"
-            >
-              Browse All Certificates
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
+          <h2 className="text-3xl font-serif font-bold text-sozo-blue text-center mb-12">
+            Our 12 Academic Schools
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {departments.map((dept, i) => (
+              <div key={dept.name} className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:border-sozo-gold transition-colors">
+                <span className="inline-block w-8 h-8 bg-sozo-blue text-white text-sm font-bold rounded-full flex items-center justify-center mb-3">
+                  {i + 1}
+                </span>
+                <h3 className="text-lg font-bold text-sozo-blue mb-2">{dept.name}</h3>
+                <p className="text-gray-600 text-sm">{dept.focus}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Why Choose SOZO */}
+      {/* Educational Philosophy */}
       <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-blue-900 mb-4">
-              Why Choose SOZO Global?
-            </h2>
-          </div>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-serif font-bold text-sozo-blue mb-6">Educational Philosophy</h2>
+          <p className="text-gray-700 leading-relaxed mb-6">
+            SOZO Global stands at the unique intersection of biblical depth, doctrinal accuracy, and
+            intellectual excellence. Every course—whether in prophetic ministry, Kingdom economics,
+            or deliverance—is grounded in Scripture, scholarly sources, and Spirit-breathed insight.
+          </p>
+          <p className="text-gray-700 leading-relaxed">
+            Students are trained to think critically, study the Word deeply, and apply revelation
+            responsibly. We don&apos;t just teach students what to believe—we train them to know why,
+            how, and when to move with Kingdom precision.
+          </p>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                <BookOpen className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold text-blue-900 mb-3">Academic Excellence</h3>
-              <p className="text-gray-600">
-                Rigorous academic standards combined with practical ministry application 
-                for comprehensive spiritual education.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="h-8 w-8 text-blue-900" />
-              </div>
-              <h3 className="text-xl font-semibold text-blue-900 mb-3">Global Community</h3>
-              <p className="text-gray-600">
-                Connect with students and faculty from over 50 nations in a 
-                diverse, Spirit-led learning environment.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold text-blue-900 mb-3">Supernatural Training</h3>
-              <p className="text-gray-600">
-                Unique integration of supernatural ministry training with traditional 
-                theological education for complete preparation.
-              </p>
-            </div>
+      <section className="py-16 hero-gradient text-white text-center">
+        <div className="max-w-3xl mx-auto px-4">
+          <h2 className="text-3xl font-serif font-bold mb-4">Begin Your Academic Journey</h2>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/admissions/apply" className="bg-sozo-gold text-sozo-blue px-8 py-4 rounded-lg font-bold hover:bg-sozo-gold-light transition-colors">
+              Apply Now
+            </Link>
+            <Link href="/programs" className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-sozo-blue transition-colors">
+              View Programs
+            </Link>
           </div>
         </div>
       </section>
